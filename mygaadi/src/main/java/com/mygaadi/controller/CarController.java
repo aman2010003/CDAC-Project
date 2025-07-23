@@ -1,9 +1,12 @@
 package com.mygaadi.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.mygaadi.dto.CarFilterDTO;
 import com.mygaadi.dto.CarRequestDTO;
 import com.mygaadi.dto.CarResponseDTO;
 import com.mygaadi.service.CarService;
@@ -20,4 +23,16 @@ public class CarController {
         CarResponseDTO savedCar = carService.addCar(dto);
         return ResponseEntity.ok(savedCar);
     }
+    
+    @GetMapping("/all")
+    public ResponseEntity<List<CarResponseDTO>> getAllCars() {
+        List<CarResponseDTO> allCars = carService.getAllCars();
+        return ResponseEntity.ok(allCars);
+    }
+    
+    @PostMapping("/filter")
+    public ResponseEntity<List<CarResponseDTO>> filterCars(@RequestBody CarFilterDTO filter) {
+        return ResponseEntity.ok(carService.filterCars(filter));
+    }
+
 }

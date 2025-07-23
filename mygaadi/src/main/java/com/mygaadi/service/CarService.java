@@ -12,6 +12,9 @@ public interface CarService {
     List<CarResponseDTO> getAllCars();
     
     List<CarResponseDTO> filterCars(CarFilterDTO filter);
+    
+    CarResponseDTO getCarById(Long id);
+
 
 
 }

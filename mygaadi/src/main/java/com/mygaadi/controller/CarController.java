@@ -34,5 +34,12 @@ public class CarController {
     public ResponseEntity<List<CarResponseDTO>> filterCars(@RequestBody CarFilterDTO filter) {
         return ResponseEntity.ok(carService.filterCars(filter));
     }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<CarResponseDTO> getCarById(@PathVariable Long id) {
+        CarResponseDTO response = carService.getCarById(id);
+        return ResponseEntity.ok(response);
+    }
+
 
 }

@@ -68,4 +68,12 @@ public class CarServiceImpl implements CarService {
                    .map(car -> modelMapper.map(car, CarResponseDTO.class))
                    .collect(Collectors.toList());
     }
+    
+    @Override
+    public CarResponseDTO getCarById(Long id) {
+        Car car = carDao.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Car not found with ID " + id));
+        return modelMapper.map(car, CarResponseDTO.class);
+    }
+
 }
